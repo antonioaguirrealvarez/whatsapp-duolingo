@@ -1,0 +1,66 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "whatsapp-duolingo"
+version = "0.1.0"
+description = "WhatsApp-First AI Language Tutor for LATAM"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+pydantic = {extras = ["settings"], version = "^2.5.0"}
+pydantic-settings = "^2.1.0"
+python-dotenv = "^1.0.0"
+httpx = "^0.25.2"
+twilio = "^8.10.0"
+langchain = "^0.1.0"
+langchain-openai = "^0.0.5"
+langsmith = "^0.1.0"
+jinja2 = "^3.1.2"
+firecrawl-py = "^0.0.6"
+redis = "^5.0.1"
+sqlalchemy = "^2.0.23"
+alembic = "^1.13.1"
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+respx = "^0.20.2"
+black = "^23.11.0"
+ruff = "^0.1.6"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+respx = "^0.20.2"
+black = "^23.11.0"
+ruff = "^0.1.6"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+select = ["E", "F", "W", "I", "N", "B", "C90", "UP"]
+ignore = ["E501", "B008"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+asyncio_mode = "auto"
+
+[tool.alembic]
+script_location = "src/data/migrations"
